@@ -202,6 +202,82 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/UVA-455/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/20/UVA-455/" class="post-title-link" itemprop="url">UVA-455</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="UVA-455"><a href="#UVA-455" class="headerlink" title="UVA-455"></a>UVA-455</h2><p>这道题的输出格式要求很特别</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//#define _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">1010</span>];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isperidic</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s, <span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> tmp;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= p; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> idx = i; tmp = s[idx];</span><br><span class="line">        <span class="keyword">while</span> (idx &lt; <span class="built_in">strlen</span>(s))&#123;</span><br><span class="line">            <span class="keyword">if</span> (s[(idx + p) % <span class="built_in">strlen</span>(s)] != tmp) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            idx += p;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//freopen(&quot;input.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="keyword">int</span> T; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;T); <span class="keyword">int</span> T0 = T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="keyword">if</span> (T+<span class="number">1</span> != T0) &#123; <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>); &#125;</span><br><span class="line">        <span class="built_in">memset</span>(s, <span class="string">&#x27;\0&#x27;</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(s));</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, &amp;s);</span><br><span class="line">        <span class="keyword">int</span> n = <span class="built_in">strlen</span>(s); <span class="keyword">int</span> peridic = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n%i != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isperidic</span>(s, i)) &#123;</span><br><span class="line">                peridic = i;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, peridic);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//首先周期数必定是strlen(s)的因数</span></span><br><span class="line"><span class="comment">//strlen(s)&lt;80,所以可以遍历周期数来进行判断；</span></span><br><span class="line"><span class="comment">//用处理循环数组的方法（取余数）来解决越界的问题</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.3%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E5%BC%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -353,7 +429,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.2%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0/">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E4%BA%A4%E5%A4%A7%E6%9C%BA%E8%AF%95%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%88%86%E5%89%B2%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%BA%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%8C%E4%BD%BF%E5%BE%97%E5%85%B6%E4%B8%A4%E9%83%A8%E5%88%86%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC%E6%9C%80%E5%B0%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.svg">
@@ -366,7 +442,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/20/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.2%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">严蔚敏 《数据结构》第二章线性表 2.2节线性表的顺序表示 C++实现</a>
+          <a href="/2021/06/20/%E4%BA%A4%E5%A4%A7%E6%9C%BA%E8%AF%95%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%88%86%E5%89%B2%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%BA%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%8C%E4%BD%BF%E5%BE%97%E5%85%B6%E4%B8%A4%E9%83%A8%E5%88%86%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC%E6%9C%80%E5%B0%8F/" class="post-title-link" itemprop="url">交大机试题目：分割一个数组为两部分，使得其两部分和的差值最小</a>
         </h2>
 
         <div class="post-meta-container">
@@ -400,8 +476,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="严蔚敏-《数据结构》第二章线性表-2-2节线性表的顺序表示-C-实现"><a href="#严蔚敏-《数据结构》第二章线性表-2-2节线性表的顺序表示-C-实现" class="headerlink" title="严蔚敏 《数据结构》第二章线性表 2.2节线性表的顺序表示 C++实现"></a>严蔚敏 《数据结构》第二章线性表 2.2节线性表的顺序表示 C++实现</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// sq_list.h</span></span><br><span class="line"><span class="comment">// By Envirian</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> SQ_LIST_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SQ_LIST_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> Status              = <span class="keyword">int</span>;  <span class="comment">// 返回值类型</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> TRUE            = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> FALSE           = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> OK              = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ERROE           = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INFEASIBLE      = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> kLIST_INIT_SIZE = <span class="number">100</span>;  <span class="comment">// 线性表的初始容量</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> kLISTINCREASE   = <span class="number">10</span>;   <span class="comment">// 线性表的容量增量</span></span><br><span class="line"><span class="keyword">using</span> ElemType            = <span class="keyword">int</span>;  <span class="comment">// 数据项类型</span></span><br><span class="line"><span class="comment">// 线性表，支持插入、删除、查找、随机访问操作</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SqList</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    ElemType* elem_&#123;<span class="literal">nullptr</span>&#125;;  <span class="comment">// 储存空间基址</span></span><br><span class="line">    <span class="keyword">int</span> length_&#123;<span class="number">0</span>&#125;;            <span class="comment">// 当前长度（元素个数）</span></span><br><span class="line">    <span class="keyword">int</span> list_size_&#123;<span class="number">0</span>&#125;;         <span class="comment">// 当前容量（可以容纳的元素个数）</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Status <span class="title">InitList</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 顺序线性表的初始化</span></span><br><span class="line">        elem_ = <span class="keyword">new</span> ElemType[kLIST_INIT_SIZE];</span><br><span class="line">        <span class="keyword">if</span> (!elem_)</span><br><span class="line">            <span class="keyword">return</span> FALSE;  <span class="comment">// 存储分配失败</span></span><br><span class="line">        length_    = <span class="number">0</span>;</span><br><span class="line">        list_size_ = kLIST_INIT_SIZE;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">ListInsert</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">const</span> ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 在顺序线性表的第i个位置之前插入新的元素e</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt; length_)</span><br><span class="line">            <span class="keyword">return</span> ERROE;</span><br><span class="line">        <span class="keyword">if</span> (length_ &gt;= list_size_) &#123;</span><br><span class="line">            <span class="comment">// 容量已满，重新分配。</span></span><br><span class="line">            <span class="comment">// 不使用realloc的话，这需要一个Resize()函数来实现。</span></span><br><span class="line">            <span class="keyword">if</span> (!<span class="built_in">Resize</span>(list_size_ + kLISTINCREASE))</span><br><span class="line">                <span class="keyword">return</span> FALSE;</span><br><span class="line">        &#125;</span><br><span class="line">        ElemType* q = &amp;elem_[i];  <span class="comment">// q为插入位置</span></span><br><span class="line">        <span class="keyword">for</span> (ElemType* p = &amp;elem_[length_ - <span class="number">1</span>]; p &gt;= q; --p) &#123;</span><br><span class="line">            <span class="comment">// 从最后一个元素开始，每个元素后移一位，直到插入位置。</span></span><br><span class="line">            *(p + <span class="number">1</span>) = *p;</span><br><span class="line">        &#125;</span><br><span class="line">        *q = e;     <span class="comment">// 插入数据项</span></span><br><span class="line">        ++length_;  <span class="comment">// 长度+1</span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">Resize</span><span class="params">(<span class="keyword">int</span> new_size)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 上面插入函数中的Resieze()，改变线性表的容量。</span></span><br><span class="line">        <span class="keyword">if</span> (new_size &lt;= list_size_)</span><br><span class="line">            <span class="keyword">return</span> OK;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            ElemType* new_elem = <span class="keyword">new</span> ElemType[new_size];</span><br><span class="line">            <span class="keyword">if</span> (!new_elem)</span><br><span class="line">                <span class="keyword">return</span> FALSE;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; list_size_; ++k) &#123;</span><br><span class="line">                new_elem[k] = elem_[k];</span><br><span class="line">            &#125;</span><br><span class="line">            list_size_ = new_size;</span><br><span class="line">            std::<span class="built_in">swap</span>(elem_, new_elem);</span><br><span class="line">            <span class="keyword">delete</span>[] new_elem;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">ListDelete</span><span class="params">(<span class="keyword">int</span> i, ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 在线性表中删除第i个元素，并用e返回其值</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= length_)</span><br><span class="line">            <span class="keyword">return</span> ERROE;         <span class="comment">// i值不合法</span></span><br><span class="line">        ElemType* p = &amp;elem_[i];  <span class="comment">// 要删除的元素地址</span></span><br><span class="line">        e           = *p;</span><br><span class="line">        ElemType* q = elem_ + length_;</span><br><span class="line">        <span class="keyword">for</span> (++p; p &lt; q; ++p) &#123;</span><br><span class="line">            <span class="comment">// 从要删除元素位置的下一个位置开始，前移一位，直到到达末尾</span></span><br><span class="line">            *(p - <span class="number">1</span>) = *p;</span><br><span class="line">        &#125;</span><br><span class="line">        --length_;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">LocateElem</span><span class="params">(<span class="keyword">const</span> ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 查找元素e第一次出现的位置，没有找到则返回-1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length_; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (elem_[i] == e) &#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">GetElem</span><span class="params">(<span class="keyword">int</span> i, ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 获取第i个位置的元素,存放到e中</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= length_)</span><br><span class="line">            <span class="keyword">return</span> ERROE;  <span class="comment">// i值不合法</span></span><br><span class="line">        e = elem_[i];</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">GetSize</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 获取线性表大小</span></span><br><span class="line">        <span class="keyword">return</span> length_;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 归并合并例程</span></span><br><span class="line">    <span class="function"><span class="keyword">friend</span> Status <span class="title">MergeList</span><span class="params">(<span class="keyword">const</span> SqList&amp; a, <span class="keyword">const</span> SqList&amp; b, SqList&amp; c)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">MergeList</span><span class="params">(<span class="keyword">const</span> SqList&amp; a, <span class="keyword">const</span> SqList&amp; b, SqList&amp; c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 线性表a和b的元素按值非递减排列</span></span><br><span class="line">    <span class="comment">// 归并到c中，也按照值非递减排列</span></span><br><span class="line">    <span class="keyword">if</span> (!c.elem_)</span><br><span class="line">        <span class="keyword">delete</span>[] c.elem_;  <span class="comment">// 清空线性表c</span></span><br><span class="line">    ElemType *pa = a.elem_, *pb = b.elem_;</span><br><span class="line">    c.list_size_ = c.length_ = a.length_ + b.length_;</span><br><span class="line">    ElemType* pc = c.elem_ = <span class="keyword">new</span> ElemType[c.list_size_];</span><br><span class="line">    <span class="keyword">if</span> (!c.elem_)</span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    ElemType *pa_last = a.elem_ + a.length_, *pb_last = b.elem_ + b.length_;</span><br><span class="line">    <span class="keyword">while</span> (pa &lt; pa_last &amp;&amp; pb &lt; pb_last) &#123;</span><br><span class="line">        <span class="keyword">if</span> (*pa &lt; *pb)</span><br><span class="line">            *pc++ = *pa++;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            *pc++ = *pb++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (pa &lt; pa_last)</span><br><span class="line">        *pc++ = *pa++;  <span class="comment">// 插入a的剩余元素</span></span><br><span class="line">    <span class="keyword">while</span> (pb &lt; pb_last)</span><br><span class="line">        *pc++ = *pb++;  <span class="comment">// 插入b的剩余元素</span></span><br><span class="line">    <span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
-
+          <p>本文参考了hh_is_vegetable大佬的文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/hh1986170901/article/details/105000680">文章链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/aea0458d54d74f3ca14012cbdf249918?tpId=62&tqId=31039&tPage=1&rp=1&ru=/ta/sju-kaoyan">题目链接</a></p>
+<p><strong>描述</strong><br>一个数组中有若干正整数，将此数组划分为两个子数组，使得两个子数组各元素之和a,b的差最小，对于非法输入应该输出ERROR。<br><strong>输入描述：</strong><br>数组中的元素<br><strong>输出描述：</strong><br>降序输出两个子数组的元素和</p>
+<p><strong>示例</strong><br>Input</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 20 30 10 10</span><br><span class="line">10 20 abc 10 10</span><br></pre></td></tr></table></figure>
+<p>Output</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">40 40</span><br><span class="line">ERROR</span><br></pre></td></tr></table></figure>
+<p><strong>思路：</strong><br>也就是求数组中哪些元素的和，能够在小于等于sum/2的条件下最大。于是，看似是01背包的题。</p>
+<p>但是，01背包的体积V是有限制的，这里V可以很大！int范围内都可以取到，也就是需要2^32^B=4GB的空间，不可能dp。</p>
+<p>所以考虑DFS，但是DFS的复杂度又是O(2^n^)，必须要剪枝。</p>
+<p>下面第13行的剪枝思路真是妙到不行：先对数组从大到小排序，那么DFS的过程中，到了第<code>i</code>个元素选不选取的子问题。当前子问题的和记为<code>val</code>，最大和记为<code>max_val</code>，用于储存数据的数组为<code>vec</code>，如果<code>val+(vec.size()-i)*vec[i]&lt;=max_val</code>，那么，即使选取后面的所有元素，都不可能更新<code>max_val</code>了，所以可以直接return，非常漂亮。</p>
+<p>另外还有一些零碎的剪枝，比如到了<code>max_val==half</code>的时候就可以一路return回去(其实，注释掉13行的剪枝和30行的排序，只用这个剪枝都能88ms左右AC，上面那个技巧性很强的剪枝可以直接压到19ms)。</p>
+<p>这道题的IO处理也值得学习，stringstream和sscanf、sprintf一样都是处理字符串的好工具。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum,half;</span><br><span class="line"><span class="keyword">int</span> max_half=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;vec,<span class="keyword">int</span> i,<span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(val&gt;=max_half) max_half=val;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(i&gt;=vec.<span class="built_in">size</span>()) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(val+(vec.<span class="built_in">size</span>()-i)*vec[i]&lt;=max_half) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(max_half==half) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(val+vec[i]&lt;=half)&#123;</span><br><span class="line">        <span class="built_in">DFS</span>(vec,i+<span class="number">1</span>,val+vec[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(max_half==half) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">DFS</span>(vec,i+<span class="number">1</span>,val);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;vec)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    sum=half=max_half=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i:vec) sum+=i;</span><br><span class="line">    half=sum/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">sort</span>(vec.<span class="built_in">rbegin</span>(),vec.<span class="built_in">rend</span>());</span><br><span class="line">    <span class="built_in">DFS</span>(vec,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    cout&lt;&lt;sum-max_half&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;max_half&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">getline</span>(cin,line))&#123;</span><br><span class="line">        <span class="keyword">bool</span> is_valid=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i:line)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!(<span class="string">&#x27;0&#x27;</span>&lt;=i&amp;&amp;i&lt;=<span class="string">&#x27;9&#x27;</span>||i==<span class="string">&#x27; &#x27;</span>))&#123;</span><br><span class="line">                is_valid=<span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!is_valid)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;ERROR\n&quot;</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function">stringstream <span class="title">ss</span><span class="params">(line)</span></span>;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; vec;<span class="keyword">int</span> tmp;</span><br><span class="line">        <span class="keyword">while</span>(ss&gt;&gt;tmp) vec.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        <span class="built_in">Solve</span>(vec);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>By the way，<code>getline(cin,line)</code>的返回值是<code>cin</code>对象，所以可以像<code>while(cin&gt;&gt;tmp)&#123;&#125;</code>这样类似的写。</p>
 
       
     </div>
@@ -501,250 +590,6 @@
 <p>当a中的所有元素都大于target的时候，LowerBound和UpperBound都返回0，此时第一个大于target的元素也就是a[0]。</p>
 <p>有了上面对二分法和LowerBound和UpperBound的理解之后，就可以用stl中的的lower_bound函数和upper_bound函数了，CSDN上有介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40160605/article/details/80150252">关于lower_bound( )和upper_bound( )的常见用法</a></p>
 <p>参考文献《算法笔记》第二版 胡凡</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E4%BA%A4%E5%A4%A7%E6%9C%BA%E8%AF%95%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%88%86%E5%89%B2%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%BA%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%8C%E4%BD%BF%E5%BE%97%E5%85%B6%E4%B8%A4%E9%83%A8%E5%88%86%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC%E6%9C%80%E5%B0%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.svg">
-      <meta itemprop="name" content="Zhu Guiyuan">
-      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="缘儿的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/20/%E4%BA%A4%E5%A4%A7%E6%9C%BA%E8%AF%95%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%88%86%E5%89%B2%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%BA%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%8C%E4%BD%BF%E5%BE%97%E5%85%B6%E4%B8%A4%E9%83%A8%E5%88%86%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC%E6%9C%80%E5%B0%8F/" class="post-title-link" itemprop="url">交大机试题目：分割一个数组为两部分，使得其两部分和的差值最小</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>本文参考了hh_is_vegetable大佬的文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/hh1986170901/article/details/105000680">文章链接</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/aea0458d54d74f3ca14012cbdf249918?tpId=62&tqId=31039&tPage=1&rp=1&ru=/ta/sju-kaoyan">题目链接</a></p>
-<p><strong>描述</strong><br>一个数组中有若干正整数，将此数组划分为两个子数组，使得两个子数组各元素之和a,b的差最小，对于非法输入应该输出ERROR。<br><strong>输入描述：</strong><br>数组中的元素<br><strong>输出描述：</strong><br>降序输出两个子数组的元素和</p>
-<p><strong>示例</strong><br>Input</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10 20 30 10 10</span><br><span class="line">10 20 abc 10 10</span><br></pre></td></tr></table></figure>
-<p>Output</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">40 40</span><br><span class="line">ERROR</span><br></pre></td></tr></table></figure>
-<p><strong>思路：</strong><br>也就是求数组中哪些元素的和，能够在小于等于sum/2的条件下最大。于是，看似是01背包的题。</p>
-<p>但是，01背包的体积V是有限制的，这里V可以很大！int范围内都可以取到，也就是需要2^32^B=4GB的空间，不可能dp。</p>
-<p>所以考虑DFS，但是DFS的复杂度又是O(2^n^)，必须要剪枝。</p>
-<p>下面第13行的剪枝思路真是妙到不行：先对数组从大到小排序，那么DFS的过程中，到了第<code>i</code>个元素选不选取的子问题。当前子问题的和记为<code>val</code>，最大和记为<code>max_val</code>，用于储存数据的数组为<code>vec</code>，如果<code>val+(vec.size()-i)*vec[i]&lt;=max_val</code>，那么，即使选取后面的所有元素，都不可能更新<code>max_val</code>了，所以可以直接return，非常漂亮。</p>
-<p>另外还有一些零碎的剪枝，比如到了<code>max_val==half</code>的时候就可以一路return回去(其实，注释掉13行的剪枝和30行的排序，只用这个剪枝都能88ms左右AC，上面那个技巧性很强的剪枝可以直接压到19ms)。</p>
-<p>这道题的IO处理也值得学习，stringstream和sscanf、sprintf一样都是处理字符串的好工具。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> sum,half;</span><br><span class="line"><span class="keyword">int</span> max_half=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;vec,<span class="keyword">int</span> i,<span class="keyword">int</span> val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(val&gt;=max_half) max_half=val;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(i&gt;=vec.<span class="built_in">size</span>()) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(val+(vec.<span class="built_in">size</span>()-i)*vec[i]&lt;=max_half) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(max_half==half) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(val+vec[i]&lt;=half)&#123;</span><br><span class="line">        <span class="built_in">DFS</span>(vec,i+<span class="number">1</span>,val+vec[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(max_half==half) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">DFS</span>(vec,i+<span class="number">1</span>,val);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Solve</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;vec)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    sum=half=max_half=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i:vec) sum+=i;</span><br><span class="line">    half=sum/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">sort</span>(vec.<span class="built_in">rbegin</span>(),vec.<span class="built_in">rend</span>());</span><br><span class="line">    <span class="built_in">DFS</span>(vec,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    cout&lt;&lt;sum-max_half&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;max_half&lt;&lt;endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string line;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">getline</span>(cin,line))&#123;</span><br><span class="line">        <span class="keyword">bool</span> is_valid=<span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;i:line)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!(<span class="string">&#x27;0&#x27;</span>&lt;=i&amp;&amp;i&lt;=<span class="string">&#x27;9&#x27;</span>||i==<span class="string">&#x27; &#x27;</span>))&#123;</span><br><span class="line">                is_valid=<span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!is_valid)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;ERROR\n&quot;</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function">stringstream <span class="title">ss</span><span class="params">(line)</span></span>;</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt; vec;<span class="keyword">int</span> tmp;</span><br><span class="line">        <span class="keyword">while</span>(ss&gt;&gt;tmp) vec.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        <span class="built_in">Solve</span>(vec);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>By the way，<code>getline(cin,line)</code>的返回值是<code>cin</code>对象，所以可以像<code>while(cin&gt;&gt;tmp)&#123;&#125;</code>这样类似的写。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E9%80%92%E5%BD%92%E3%80%81%E9%9D%9E%E9%80%92%E5%BD%92%E5%86%99%E6%B3%95%E5%92%8C%E9%9A%8F%E6%9C%BA%E5%BF%AB%E6%8E%92%E7%9A%84%E9%80%92%E5%BD%92%E5%86%99%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.svg">
-      <meta itemprop="name" content="Zhu Guiyuan">
-      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="缘儿的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/20/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E9%80%92%E5%BD%92%E3%80%81%E9%9D%9E%E9%80%92%E5%BD%92%E5%86%99%E6%B3%95%E5%92%8C%E9%9A%8F%E6%9C%BA%E5%BF%AB%E6%8E%92%E7%9A%84%E9%80%92%E5%BD%92%E5%86%99%E6%B3%95/" class="post-title-link" itemprop="url">归并排序的递归、非递归写法和随机快排的递归写法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>归并排序</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; v, <span class="keyword">int</span> L1, <span class="keyword">int</span> R1, <span class="keyword">int</span> L2, <span class="keyword">int</span> R2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">tmp</span><span class="params">(R2 - L2 + R1 - L1 + <span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> i = L1, j = L2, index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= R1 &amp;&amp; j &lt;= R2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v[i] &lt;= v[j])</span><br><span class="line">            tmp[index++] = v[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            tmp[index++] = v[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= R1) tmp[index++] = v[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= R2) tmp[index++] = v[j++];</span><br><span class="line">    <span class="comment">// 放回v里面</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index; ++i) &#123;</span><br><span class="line">        v[L1 + i] = tmp[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort_1</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; v, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">MergeSort_1</span>(v, left, mid);</span><br><span class="line">        <span class="built_in">MergeSort_1</span>(v, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="built_in">Merge</span>(v, left, mid, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort_2</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; v, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> step = <span class="number">2</span>; step / <span class="number">2</span> &lt;= right - left; step *= <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = left; i &lt;= right; i += step) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = i + (step - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            <span class="built_in">Merge</span>(v, i, mid, mid + <span class="number">1</span>, <span class="built_in">min</span>(right, i + step - <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; v = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;########    OriginArray    ########\n&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;########    MergeSort_1    ########\n&quot;</span>;</span><br><span class="line">    <span class="built_in">MergeSort_1</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;########    MergeSort_2    ########\n&quot;</span>;</span><br><span class="line">    v = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">MergeSort_2</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>随机快排</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RandPartition</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 生成[left,rihgt]区间内的随机数p</span></span><br><span class="line">    <span class="keyword">int</span> p = <span class="built_in">round</span>(<span class="number">0.1</span> * <span class="built_in">rand</span>() / RAND_MAX * (right - left) + left);</span><br><span class="line">    std::<span class="built_in">swap</span>(A[left], A[p]);</span><br><span class="line">    <span class="keyword">int</span> tmp = A[left];</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="comment">// 注意下面两个while中的第一个条件，保证了所有数都大于或者小于主元时候不非法访问</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; A[right] &gt; tmp) --right;</span><br><span class="line">        A[left] = A[right];</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; A[left] &lt;= tmp) ++left;</span><br><span class="line">        A[right] = A[left];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 退出时left==right</span></span><br><span class="line">    A[left] = tmp;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &lt; right) &#123;  <span class="comment">//当前区间长度大于1</span></span><br><span class="line">        <span class="comment">// 获取主元坐标</span></span><br><span class="line">        <span class="keyword">int</span> pos = <span class="built_in">RandPartition</span>(A, left, right);</span><br><span class="line">        <span class="comment">// 区间通过主元坐标一分为二</span></span><br><span class="line">        <span class="built_in">QuickSort</span>(A, left, pos);</span><br><span class="line">        <span class="built_in">QuickSort</span>(A, pos + <span class="number">1</span>, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">srand</span>((<span class="keyword">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; v = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;########    OriginArray    ########\n&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;#########    QuickSort    #########\n&quot;</span>;</span><br><span class="line">    <span class="built_in">QuickSort</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E6%A1%82%E5%9C%86%E5%84%BF%E7%9A%84%E9%94%99%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%A0%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.svg">
-      <meta itemprop="name" content="Zhu Guiyuan">
-      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="缘儿的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/20/%E6%A1%82%E5%9C%86%E5%84%BF%E7%9A%84%E9%94%99%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%A0%88/" class="post-title-link" itemprop="url">桂圆儿的错题复习栈</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="桂圆儿的Codeforces错题集"><a href="#桂圆儿的Codeforces错题集" class="headerlink" title="桂圆儿的Codeforces错题集"></a>桂圆儿的Codeforces错题集</h2><p>开一个文章记录自己Codeforces上的错题，方便以后复习。</p>
-<h2 id="Educational-Codeforces-Round-104-Rated-for-Div-2"><a href="#Educational-Codeforces-Round-104-Rated-for-Div-2" class="headerlink" title="Educational Codeforces Round 104 (Rated for Div. 2)"></a><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487">Educational Codeforces Round 104 (Rated for Div. 2)</a></h2><p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487/problem/C">Problem C Minimum Ties</a><br>这道题是关于反对称矩阵的，找规律可以做出来，实现的时候没有注意边界条件导致的WA。</p>
-<p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487/problem/E">Problem E Cheap Dinner</a><br>这道题是dp，比赛的时候还不会写dp，现在看来应该是签到题了。</p>
-<h2 id="PAT甲级"><a href="#PAT甲级" class="headerlink" title="PAT甲级"></a><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/type/7">PAT甲级</a></h2><p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/994805458722734080">PAT 甲级 1033 To Fill or Not to Fill</a><br>情况稍微复杂一点的贪心算法</p>
-<p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/994805507225665536">PAT 甲级 1010 Radix</a><br>看起来是很简单的模拟实际上是边界条件很复杂的二分算法的题。</p>
 
       
     </div>
@@ -963,7 +808,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E9%80%92%E5%BD%92%E7%94%9F%E6%88%901~n%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97/">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20%E7%BD%91%E7%BB%9C%E5%B1%82%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2LS%E7%AE%97%E6%B3%95%EF%BC%88Dijkstra%E7%AE%97%E6%B3%95%EF%BC%89%20%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%AE%9E%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.svg">
@@ -976,7 +821,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/20/%E9%80%92%E5%BD%92%E7%94%9F%E6%88%901~n%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97/" class="post-title-link" itemprop="url">递归生成1~n的全排列</a>
+          <a href="/2021/06/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20%E7%BD%91%E7%BB%9C%E5%B1%82%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2LS%E7%AE%97%E6%B3%95%EF%BC%88Dijkstra%E7%AE%97%E6%B3%95%EF%BC%89%20%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">计算机网络 网络层控制平面LS算法（Dijkstra算法） 邻接表实现</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1010,9 +855,164 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="递归生成1-n的全排列"><a href="#递归生成1-n的全排列" class="headerlink" title="递归生成1~n的全排列"></a>递归生成1~n的全排列</h2><p>为了不污染全局作用域，把变量封装到了类里。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FullArangement</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">FullArangement</span>(<span class="keyword">int</span> num)</span><br><span class="line">        : n&#123;num&#125;</span><br><span class="line">    &#123;</span><br><span class="line">        hash_table = vector&lt;<span class="keyword">bool</span>&gt;(n + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">        P          = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GeneratrP</span><span class="params">(<span class="keyword">int</span> index = <span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    vector&lt;<span class="keyword">bool</span>&gt; hash_table;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; P;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FullArangement::GeneratrP</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (index == n + <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            cout &lt;&lt; P[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">1</span>; x &lt;= n; ++x) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hash_table[x] == <span class="literal">false</span>) &#123;</span><br><span class="line">            P[index]      = x;</span><br><span class="line">            hash_table[x] = <span class="literal">true</span>;</span><br><span class="line">            <span class="built_in">GeneratrP</span>(index + <span class="number">1</span>);</span><br><span class="line">            hash_table[x] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="built_in">FullArangement</span>(n).<span class="built_in">GeneratrP</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="comment">// 邻接表list&lt;pair&lt;int, int&gt;&gt; neighber  first是权值,second是节点序号</span></span><br><span class="line">    list&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; neighber;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">Dijkstra</span><span class="params">(<span class="keyword">const</span> vector&lt;Node&gt;&amp; graph, <span class="keyword">int</span> start)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 无穷距离</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="comment">// 一共有多少个节点</span></span><br><span class="line">    <span class="keyword">int</span> node_num = graph.<span class="built_in">size</span>();</span><br><span class="line">    <span class="comment">// 用来返回的距离表</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">distance_from_start</span><span class="params">(node_num, INF)</span></span>;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;&amp; dis = distance_from_start;</span><br><span class="line">    <span class="comment">// 已经得到了多少个节点的结果</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">is_checked</span><span class="params">(node_num, <span class="literal">false</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> checked_num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    checked_num       = <span class="number">1</span>;</span><br><span class="line">    is_checked[start] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : graph[start].neighber) &#123;</span><br><span class="line">        dis[i.second] = i.first;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 循环</span></span><br><span class="line">    <span class="keyword">while</span> (checked_num &lt; node_num) &#123;</span><br><span class="line">        <span class="keyword">int</span> node_to_check, min_dis = INF;</span><br><span class="line">        <span class="comment">// 找到了最小距离的点，也就是下一个确认的点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; node_num; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!is_checked[i] &amp;&amp; dis[i] &lt; min_dis) &#123;</span><br><span class="line">                node_to_check = i;</span><br><span class="line">                min_dis       = dis[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 加入已确认的集合</span></span><br><span class="line">        ++checked_num;</span><br><span class="line">        is_checked[node_to_check] = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">// 更新node_to_check的邻居</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : graph[node_to_check].neighber) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!is_checked[i.second]) &#123;</span><br><span class="line">                dis[i.second] = std::<span class="built_in">min</span>(dis[node_to_check] + i.first, dis[i.second]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dis;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">// Input</span></span><br><span class="line">    <span class="keyword">int</span> V, E;</span><br><span class="line">    cin &gt;&gt; V &gt;&gt; E;  <span class="comment">// 节点数和边数</span></span><br><span class="line">    <span class="function">vector&lt;Node&gt; <span class="title">graph</span><span class="params">(V)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; E; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> from, to, cost;  <span class="comment">// 起点，终点，权值</span></span><br><span class="line">        cin &gt;&gt; from &gt;&gt; to &gt;&gt; cost;</span><br><span class="line">        <span class="comment">// 无向图 from to等价</span></span><br><span class="line">        graph[from].neighber.<span class="built_in">push_back</span>(&#123;cost, to&#125;);</span><br><span class="line">        graph[to].neighber.<span class="built_in">push_back</span>(&#123;cost, from&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 测试代码</span></span><br><span class="line">    <span class="keyword">auto</span> dis = <span class="built_in">Dijkstra</span>(graph, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; V; i++)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;S到序号&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;顶点的最短距离:&quot;</span> &lt;&lt; dis[i] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考文献：《计算机网络：自顶向下方法》中文版（原书第7版）P246伪代码</p>
 
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E9%80%92%E5%BD%92%E3%80%81%E9%9D%9E%E9%80%92%E5%BD%92%E5%86%99%E6%B3%95%E5%92%8C%E9%9A%8F%E6%9C%BA%E5%BF%AB%E6%8E%92%E7%9A%84%E9%80%92%E5%BD%92%E5%86%99%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/20/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E7%9A%84%E9%80%92%E5%BD%92%E3%80%81%E9%9D%9E%E9%80%92%E5%BD%92%E5%86%99%E6%B3%95%E5%92%8C%E9%9A%8F%E6%9C%BA%E5%BF%AB%E6%8E%92%E7%9A%84%E9%80%92%E5%BD%92%E5%86%99%E6%B3%95/" class="post-title-link" itemprop="url">归并排序的递归、非递归写法和随机快排的递归写法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>归并排序</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Merge</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; v, <span class="keyword">int</span> L1, <span class="keyword">int</span> R1, <span class="keyword">int</span> L2, <span class="keyword">int</span> R2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">tmp</span><span class="params">(R2 - L2 + R1 - L1 + <span class="number">2</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> i = L1, j = L2, index = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= R1 &amp;&amp; j &lt;= R2) &#123;</span><br><span class="line">        <span class="keyword">if</span> (v[i] &lt;= v[j])</span><br><span class="line">            tmp[index++] = v[i++];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            tmp[index++] = v[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= R1) tmp[index++] = v[i++];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= R2) tmp[index++] = v[j++];</span><br><span class="line">    <span class="comment">// 放回v里面</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index; ++i) &#123;</span><br><span class="line">        v[L1 + i] = tmp[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort_1</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; v, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">MergeSort_1</span>(v, left, mid);</span><br><span class="line">        <span class="built_in">MergeSort_1</span>(v, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="built_in">Merge</span>(v, left, mid, mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MergeSort_2</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; v, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> step = <span class="number">2</span>; step / <span class="number">2</span> &lt;= right - left; step *= <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = left; i &lt;= right; i += step) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = i + (step - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">            <span class="built_in">Merge</span>(v, i, mid, mid + <span class="number">1</span>, <span class="built_in">min</span>(right, i + step - <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; v = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;########    OriginArray    ########\n&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;########    MergeSort_1    ########\n&quot;</span>;</span><br><span class="line">    <span class="built_in">MergeSort_1</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;########    MergeSort_2    ########\n&quot;</span>;</span><br><span class="line">    v = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    <span class="built_in">MergeSort_2</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>随机快排</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RandPartition</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 生成[left,rihgt]区间内的随机数p</span></span><br><span class="line">    <span class="keyword">int</span> p = <span class="built_in">round</span>(<span class="number">0.1</span> * <span class="built_in">rand</span>() / RAND_MAX * (right - left) + left);</span><br><span class="line">    std::<span class="built_in">swap</span>(A[left], A[p]);</span><br><span class="line">    <span class="keyword">int</span> tmp = A[left];</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="comment">// 注意下面两个while中的第一个条件，保证了所有数都大于或者小于主元时候不非法访问</span></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; A[right] &gt; tmp) --right;</span><br><span class="line">        A[left] = A[right];</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; A[left] &lt;= tmp) ++left;</span><br><span class="line">        A[right] = A[left];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 退出时left==right</span></span><br><span class="line">    A[left] = tmp;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">QuickSort</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &lt; right) &#123;  <span class="comment">//当前区间长度大于1</span></span><br><span class="line">        <span class="comment">// 获取主元坐标</span></span><br><span class="line">        <span class="keyword">int</span> pos = <span class="built_in">RandPartition</span>(A, left, right);</span><br><span class="line">        <span class="comment">// 区间通过主元坐标一分为二</span></span><br><span class="line">        <span class="built_in">QuickSort</span>(A, left, pos);</span><br><span class="line">        <span class="built_in">QuickSort</span>(A, pos + <span class="number">1</span>, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">srand</span>((<span class="keyword">unsigned</span>)<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; v = &#123;<span class="number">9</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">0</span>&#125;;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;########    OriginArray    ########\n&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;#########    QuickSort    #########\n&quot;</span>;</span><br><span class="line">    <span class="built_in">QuickSort</span>(v, <span class="number">0</span>, v.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : v) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E6%A1%82%E5%9C%86%E5%84%BF%E7%9A%84%E9%94%99%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%A0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/20/%E6%A1%82%E5%9C%86%E5%84%BF%E7%9A%84%E9%94%99%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%A0%88/" class="post-title-link" itemprop="url">桂圆儿的错题复习栈</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="桂圆儿的Codeforces错题集"><a href="#桂圆儿的Codeforces错题集" class="headerlink" title="桂圆儿的Codeforces错题集"></a>桂圆儿的Codeforces错题集</h2><p>开一个文章记录自己Codeforces上的错题，方便以后复习。</p>
+<h2 id="Educational-Codeforces-Round-104-Rated-for-Div-2"><a href="#Educational-Codeforces-Round-104-Rated-for-Div-2" class="headerlink" title="Educational Codeforces Round 104 (Rated for Div. 2)"></a><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487">Educational Codeforces Round 104 (Rated for Div. 2)</a></h2><p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487/problem/C">Problem C Minimum Ties</a><br>这道题是关于反对称矩阵的，找规律可以做出来，实现的时候没有注意边界条件导致的WA。</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487/problem/E">Problem E Cheap Dinner</a><br>这道题是dp，比赛的时候还不会写dp，现在看来应该是签到题了。</p>
+<h2 id="PAT甲级"><a href="#PAT甲级" class="headerlink" title="PAT甲级"></a><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/type/7">PAT甲级</a></h2><p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/994805458722734080">PAT 甲级 1033 To Fill or Not to Fill</a><br>情况稍微复杂一点的贪心算法</p>
+<p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/994805507225665536">PAT 甲级 1010 Radix</a><br>看起来是很简单的模拟实际上是边界条件很复杂的二分算法的题。</p>
 
       
     </div>
