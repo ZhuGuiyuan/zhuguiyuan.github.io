@@ -2877,3 +2877,21 @@ body {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
 }
+.footer {
+  color: #000;
+}
+.site-brand-container {
+  background: rgba(255,255,255,0.9);
+}
+.site-subtitle {
+  color: #000;
+}
+.brand {
+  color: #000;
+}
+a {
+  color: #000;
+}
+:root {
+  --brand-hover-color: #3d2f2f;
+}
