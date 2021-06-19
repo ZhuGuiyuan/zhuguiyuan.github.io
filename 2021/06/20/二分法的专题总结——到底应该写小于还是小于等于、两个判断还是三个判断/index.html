@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CNoto+Sans+SC:300,300italic,400,400italic,700,700italic%7Cconsolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zhuguiyuan.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;hide&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;.&#x2F;public&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="二分法的专题总结二分法的本质是：寻找序列中第一个满足某条件的元素的位置。 二分法中通常让人迷惑的地方不外乎（1）while中什么时候写小于等于，什么时候不写等于；（2）while内部是写两个条件还是三个条件。 首先考虑升序排列的元素（降序等价，不去考虑了），应当分为两种情况：（1）没有重复元素；（2）有重复元素。后者是前者的一般化，也就是说后者的算法也同样适用于前者。 （1）没有重复元素这种情况下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二分法的专题总结——到底应该写小于还是小于等于、两个判断还是三个判断">
+<meta property="og:url" content="https://zhuguiyuan.github.io/2021/06/20/%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E5%88%B0%E5%BA%95%E5%BA%94%E8%AF%A5%E5%86%99%E5%B0%8F%E4%BA%8E%E8%BF%98%E6%98%AF%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E%E3%80%81%E4%B8%A4%E4%B8%AA%E5%88%A4%E6%96%AD%E8%BF%98%E6%98%AF%E4%B8%89%E4%B8%AA%E5%88%A4%E6%96%AD/index.html">
+<meta property="og:site_name" content="缘儿的博客">
+<meta property="og:description" content="二分法的专题总结二分法的本质是：寻找序列中第一个满足某条件的元素的位置。 二分法中通常让人迷惑的地方不外乎（1）while中什么时候写小于等于，什么时候不写等于；（2）while内部是写两个条件还是三个条件。 首先考虑升序排列的元素（降序等价，不去考虑了），应当分为两种情况：（1）没有重复元素；（2）有重复元素。后者是前者的一般化，也就是说后者的算法也同样适用于前者。 （1）没有重复元素这种情况下">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-19T20:22:47.000Z">
+<meta property="article:modified_time" content="2021-06-19T20:42:42.677Z">
+<meta property="article:author" content="Zhu Guiyuan">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhuguiyuan.github.io/2021/06/20/%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E5%88%B0%E5%BA%95%E5%BA%94%E8%AF%A5%E5%86%99%E5%B0%8F%E4%BA%8E%E8%BF%98%E6%98%AF%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E%E3%80%81%E4%B8%A4%E4%B8%AA%E5%88%A4%E6%96%AD%E8%BF%98%E6%98%AF%E4%B8%89%E4%B8%AA%E5%88%A4%E6%96%AD/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;zhuguiyuan.github.io&#x2F;2021&#x2F;06&#x2F;20&#x2F;%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E5%88%B0%E5%BA%95%E5%BA%94%E8%AF%A5%E5%86%99%E5%B0%8F%E4%BA%8E%E8%BF%98%E6%98%AF%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E%E3%80%81%E4%B8%A4%E4%B8%AA%E5%88%A4%E6%96%AD%E8%BF%98%E6%98%AF%E4%B8%89%E4%B8%AA%E5%88%A4%E6%96%AD&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;06&#x2F;20&#x2F;二分法的专题总结——到底应该写小于还是小于等于、两个判断还是三个判断&#x2F;&quot;,&quot;title&quot;:&quot;二分法的专题总结——到底应该写小于还是小于等于、两个判断还是三个判断&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>二分法的专题总结——到底应该写小于还是小于等于、两个判断还是三个判断 | 缘儿的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">缘儿的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">BulingBuling~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>所有文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhu Guiyuan"
+      src="/images/avatar.svg">
+  <p class="site-author-name" itemprop="name">Zhu Guiyuan</p>
+  <div class="site-description" itemprop="description">恭喜你发现了这个宝藏小站</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E5%88%B0%E5%BA%95%E5%BA%94%E8%AF%A5%E5%86%99%E5%B0%8F%E4%BA%8E%E8%BF%98%E6%98%AF%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E%E3%80%81%E4%B8%A4%E4%B8%AA%E5%88%A4%E6%96%AD%E8%BF%98%E6%98%AF%E4%B8%89%E4%B8%AA%E5%88%A4%E6%96%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二分法的专题总结——到底应该写小于还是小于等于、两个判断还是三个判断
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="二分法的专题总结"><a href="#二分法的专题总结" class="headerlink" title="二分法的专题总结"></a>二分法的专题总结</h2><p>二分法的本质是：寻找序列中第一个满足某条件的元素的位置。</p>
+<p>二分法中通常让人迷惑的地方不外乎<br>（1）while中什么时候写小于等于，什么时候不写等于；<br>（2）while内部是写两个条件还是三个条件。</p>
+<p>首先考虑升序排列的元素（降序等价，不去考虑了），应当分为两种情况：（1）没有重复元素；（2）有重复元素。后者是前者的一般化，也就是说后者的算法也同样适用于前者。</p>
+<p>（1）没有重复元素<br>这种情况下的问题一般是：查找某个元素target在序列中是否出现，如果出现则返回出现的序号，如果不出现，则返回-1。也就是确定一个区间[x,x]，target就是x位置的元素，如果没有这个元素，那么确定出来的区间是[x+1,x]，左边界大于右边界，也就是区间中不存在元素。</p>
+<p>（2）有重复元素<br>这种情况下的问题则是，确定第一个大于等于target的元素序号，和第一个大于target的元素序号，两个子问题。等价于确定一个区间[x,y)，这个区间里面的元素都等于target。如果没有target，那么确定出来的区间应该是[x,x)，也就是不区间中不存在元素。</p>
+<p>没有重复元素的二分查找代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BinarySearch</span><span class="params">(<span class="keyword">const</span> std::vector&lt;<span class="keyword">int</span>&gt;&amp; a, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = a.<span class="built_in">size</span>() - <span class="number">1</span>, mid;</span><br><span class="line">    <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">        mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (a[mid] == target)</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (a[mid] &lt; target)</span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            right = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码中，需要注意的地方有三个：（1）while的条件是left==right；（2）while中是三个判断，并且其中一个判断是a[mid]&lt;target，而不是a[mid]&lt;=target；（3）right=a.size()-1而不是a.size()</p>
+<p>对于（1）没有重复元素，所以当left&gt;right的时候就代表了没有找到。这里是不重复元素这种特殊情况的写法。在下面的重复元素的例子中可以看到，这里其实也可以不这么写。</p>
+<p>对于（2），三个判断也是不重复元素的特殊写法。因为找到了需要的值马上就返回了，所以有第一个if判断。在后面有重复元素的情况是没有第一个if判断的。有了第一个if判断，就把等于的情况分离出来了，所以是三个if else，对应等于、小于和大于。当第8行a[mid]&lt;target条件判断成立时，说明target一定在mid点的右边（不包括mid），所以下面是把left收缩到mid+1；同样的道理，第10行else成立的时候，target一定在mid点的左边（也不包括mid点）（因为此时target&lt;a[mid])，right收缩到mid-1.</p>
+<p>对于（3），有两点原因：为了和（2）统一（也就是target在left和right点构成的闭区间中，而不是开区间中）所以应该a.size()-1；考虑a中的所有元素都小于target会发生什么：倒数第三轮循环的时候，end=a.size()-1,beg=a.size()，倒数第二轮循环end=a.size(),beg=a.size()，由于我们while的条件写的是beg&lt;=end，所以此时仍然会进入循环计算mid，从而越界访问了a！！！在后面重复元素的情况中可以看到，由于我们的条件写的是beg&lt;end，所以那里是写的right=a.size()</p>
+<p>只要注意了上面三个点，元素不重复的二分查找很难写错。</p>
+<p>有重复元素的二分查找代码如下：<br>（1）查找下界（第一个大于等于target的元素的序号，[x,y)的x）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">LowerBound</span><span class="params">(<span class="keyword">const</span> std::vector&lt;<span class="keyword">int</span>&gt;&amp; a, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = a.<span class="built_in">size</span>(), mid;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (a[mid] &gt;= target) &#123;</span><br><span class="line">            <span class="comment">// 中间的数大于等于target，往左子区间[left,mid]查找</span></span><br><span class="line">            right = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 中间的数小于target，往右子区间[mid+1,right]查找</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// left==right，返回哪一个都可以</span></span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）查找上界（第一个大于target的元素的序号，[x,y)的y）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">UpperBound</span><span class="params">(<span class="keyword">const</span> std::vector&lt;<span class="keyword">int</span>&gt;&amp; a, <span class="keyword">int</span> target)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = a.<span class="built_in">size</span>(), mid;</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (a[mid] &gt; target) &#123;</span><br><span class="line">            <span class="comment">// 中间的数大于target，往左子区间[left,mid]查找</span></span><br><span class="line">            right = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 中间的数小于等于target，往右子区间[mid+1,right]查找</span></span><br><span class="line">            left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// left==right，返回哪一个都可以</span></span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面两个函数就确定了target的界。</p>
+<p>LowerBound中，我们确定了第一个大于等于target的元素，UpperBound中，我们确定了第一个大于target的元素。</p>
+<p>对于不重复的情况，就有：<br>target在nums中存在时：<br><code>nums[UpperBound(nums,target)]==target</code><br>并且有：<br><code>BinarySearch(nums,target)==UpperBound(nums,target)</code><br>target在nums中不存在时：<br><code>nums[UpperBound(nums,target)]!=target</code><br>所以说有重复元素的情况是没有重复元素情况的一般化。<br>上面的三段代码也说明了，有重复元素的二分更容易写在一个函数里面，而不是作为一个单独的函数（重复元素的二分只有一个return出口，而非重复元素的二分有两个），并且条件判断很容易，所以后面一种代码或许更加好用。（刷PAT得到的感觉）</p>
+<p>为什么LowerBound中的a[mid]&gt;=target时right=mid而a[mid]&lt;target时left=mid+1和为什么UpperBound中的a[mid]&gt;target时right=mid而a[mid]&lt;=target时left=mid+1在注释中已经说得很清楚了。如果我们把LowerBound中的判断条件写成下面这样会怎么样呢？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a[mid] &gt; target) &#123;</span><br><span class="line">    <span class="comment">// 中间的数大于target，往左子区间[left,mid-1]查找</span></span><br><span class="line">    right = mid - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 中间的数小于等于target，往右子区间[mid,right]查找</span></span><br><span class="line">    left = mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>乍一看很有道理，但是不要忘了我们LowerBound要解决的问题：寻找第一个大于等于target的元素。如果a中没有target的话，会返回离target最近的小于target的元素坐标，如果a中有target，情况会更糟：死循环。考虑当a[right]=target，而a[left]&lt;target，并且left=right-1的情况，此时mid的计算结果为left，而每次判断都会进入第二个分支，也就是left=left，永远不会跳出循环。UpperBound函数中也有类似的问题。</p>
+<p>当a中的所有元素都小于target时，LowerBound和UpperBound的最终的结果都是left和right和a.size()三者相等，也就是得到了a中最后一个元素之后元素的位置。（这也就说明了为什么要初始化成right=a.size()）</p>
+<p>当a中的所有元素都大于target的时候，LowerBound和UpperBound都返回0，此时第一个大于target的元素也就是a[0]。</p>
+<p>有了上面对二分法和LowerBound和UpperBound的理解之后，就可以用stl中的的lower_bound函数和upper_bound函数了，CSDN上有介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40160605/article/details/80150252">关于lower_bound( )和upper_bound( )的常见用法</a></p>
+<p>参考文献《算法笔记》第二版 胡凡</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Zhu Guiyuan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhuguiyuan.github.io/2021/06/20/%E4%BA%8C%E5%88%86%E6%B3%95%E7%9A%84%E4%B8%93%E9%A2%98%E6%80%BB%E7%BB%93%E2%80%94%E2%80%94%E5%88%B0%E5%BA%95%E5%BA%94%E8%AF%A5%E5%86%99%E5%B0%8F%E4%BA%8E%E8%BF%98%E6%98%AF%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E%E3%80%81%E4%B8%A4%E4%B8%AA%E5%88%A4%E6%96%AD%E8%BF%98%E6%98%AF%E4%B8%89%E4%B8%AA%E5%88%A4%E6%96%AD/" title="二分法的专题总结——到底应该写小于还是小于等于、两个判断还是三个判断">https://zhuguiyuan.github.io/2021/06/20/二分法的专题总结——到底应该写小于还是小于等于、两个判断还是三个判断/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/06/20/%E4%BA%A4%E5%A4%A7%E6%9C%BA%E8%AF%95%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%88%86%E5%89%B2%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%BA%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%8C%E4%BD%BF%E5%BE%97%E5%85%B6%E4%B8%A4%E9%83%A8%E5%88%86%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC%E6%9C%80%E5%B0%8F/" rel="prev" title="交大机试题目：分割一个数组为两部分，使得其两部分和的差值最小">
+                  <i class="fa fa-chevron-left"></i> 交大机试题目：分割一个数组为两部分，使得其两部分和的差值最小
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/06/20/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.2%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0/" rel="next" title="严蔚敏 《数据结构》第二章线性表 2.2节线性表的顺序表示 C++实现">
+                  严蔚敏 《数据结构》第二章线性表 2.2节线性表的顺序表示 C++实现 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhu Guiyuan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

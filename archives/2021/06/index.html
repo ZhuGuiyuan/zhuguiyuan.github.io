@@ -14,12 +14,11 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CNoto+Sans+SC:300,300italic,400,400italic,700,700italic%7Cconsolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zhuguiyuan.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;hide&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zhuguiyuan.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;hide&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;.&#x2F;public&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:true}}</script><script src="/js/config.js"></script>
 <meta name="description" content="恭喜你发现了这个宝藏小站">
 <meta property="og:type" content="website">
 <meta property="og:title" content="缘儿的博客">
@@ -49,7 +48,7 @@
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+<body itemscope itemtype="http://schema.org/WebPage">
   <div class="headband"></div>
 
   <main class="main">
@@ -75,6 +74,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -86,11 +86,37 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>所有文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -131,9 +157,15 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">93</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
 </div>
@@ -169,7 +201,8 @@
   <div class="post-block">
     <div class="post-content">
       <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 1 篇文章。 继续努力。</span>
+        
+        <span class="collection-header">很好! 目前共计 93 篇文章。 继续努力。</span>
       </div>
 
       
@@ -181,15 +214,195 @@
     <header class="post-header">
       <div class="post-meta-container">
         <time itemprop="dateCreated"
-              datetime="2021-06-20T02:13:15+08:00"
+              datetime="2021-06-20T04:22:47+08:00"
               content="2021-06-20">
           06-20
         </time>
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2021/06/20/Article/" itemprop="url">
-            <span itemprop="name">Article</span>
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201002%20A+B%20for%20Polynomials/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1002 A+B for Polynomials</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/CCF-CSP%E8%AE%A4%E8%AF%81%20202012-2%20%E6%9C%9F%E6%9C%AB%E9%A2%84%E6%B5%8B%E4%B9%8B%E6%9C%80%E4%BD%B3%E9%98%88%E5%80%BC/" itemprop="url">
+            <span itemprop="name">CCF-CSP认证 202012-2 期末预测之最佳阈值</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201001%20A+B%20Format/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1001 A+B Format</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201006%20Sign%20In%20and%20Sign%20Out/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1006 Sign In and Sign Out</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201005%20Spell%20It%20Right/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1005 Spell It Right</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201009%20Product%20of%20Polynomials/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1009 Product of Polynomials</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201008%20Elevator/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1008 Elevator</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201011%20World%20Cup%20Betting/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1011 World Cup Betting</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201010%20Radix/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1010 Radix</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-06-20T04:22:47+08:00"
+              content="2021-06-20">
+          06-20
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/06/20/PAT%20%E7%94%B2%E7%BA%A7%201015%20Reversible%20Primes/" itemprop="url">
+            <span itemprop="name">PAT 甲级 1015 Reversible Primes</span>
           </a>
       </div>
 
@@ -203,6 +416,9 @@
   
   
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/archives/2021/06/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2021/06/page/10/">10</a><a class="extend next" rel="next" href="/archives/2021/06/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 </div>
   </main>
@@ -227,9 +443,10 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
