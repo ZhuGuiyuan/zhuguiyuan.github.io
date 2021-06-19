@@ -202,6 +202,106 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E6%9D%AD%E7%94%B5OJ%201233%20%E8%BF%98%E6%98%AF%E7%95%85%E9%80%9A%E5%B7%A5%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/06/20/%E6%9D%AD%E7%94%B5OJ%201233%20%E8%BF%98%E6%98%AF%E7%95%85%E9%80%9A%E5%B7%A5%E7%A8%8B/" class="post-title-link" itemprop="url">杭电OJ 1233 还是畅通工程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="杭电OJ-1233-还是畅通工程"><a href="#杭电OJ-1233-还是畅通工程" class="headerlink" title="杭电OJ 1233 还是畅通工程"></a>杭电OJ 1233 还是畅通工程</h2><p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=1233">题目链接</a><br>|Problem Description|<br>|——————-|<br>|某省调查乡村交通状况，得到的统计表中列出了任意两村庄间的距离。省政府“畅通工程”的目标是使全省任何两个村庄间都可以实现公路交通（但不一定有直接的公路相连，只要能间接通过公路可达即可），并要求铺设的公路总长度为最小。请计算最小的公路总长度。|</p>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>测试输入包含若干测试用例。每个测试用例的第1行给出村庄数目N ( &lt; 100 )；随后的N(N-1)/2行对应村庄间的距离，每行给出一对正整数，分别是两个村庄的编号，以及此两村庄间的距离。为简单起见，村庄从1到N编号。(当N为0时，输入结束，该用例不被处理。)</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td>Output</td>
+</tr>
+<tr>
+<td>——————-</td>
+</tr>
+<tr>
+<td>对每个测试用例，在1行里输出最小的公路总长度</td>
+</tr>
+</tbody></table>
+<p>这道题需要注意测试n=1的情况，当输出distance的语句写在union的for循环里的时候这种情况不能输出预期的0。</p>
+<p><img src="https://img-blog.csdnimg.cn/20210302000656616.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE5MTc3NDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">parent</span><span class="params">(<span class="number">110</span>)</span></span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> a_&#123; <span class="number">-1</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> b_&#123; <span class="number">-1</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> distance_&#123; <span class="number">-1</span> &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> Edge &amp;lhs, <span class="keyword">const</span> Edge &amp;rhs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> lhs.distance_ &lt; rhs.distance_;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (parent[x] != x) parent[x] = <span class="built_in">find</span>(parent[x]);</span><br><span class="line">    <span class="keyword">return</span> parent[x];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Union</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="built_in">find</span>(x);</span><br><span class="line">    <span class="keyword">int</span> b = <span class="built_in">find</span>(y);</span><br><span class="line">    <span class="keyword">if</span> (a != b) parent[a] = b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);<span class="comment">//freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n, n) &#123;</span><br><span class="line">        <span class="comment">//边按权值排序.</span></span><br><span class="line">        <span class="keyword">int</span> m = n * (n - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="function">vector&lt;Edge&gt; <span class="title">edge_set</span><span class="params">(m)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : edge_set) cin &gt;&gt; i.a_ &gt;&gt; i.b_ &gt;&gt; i.distance_;</span><br><span class="line">        <span class="built_in">sort</span>(edge_set.<span class="built_in">begin</span>(), edge_set.<span class="built_in">end</span>(), cmp);</span><br><span class="line">        <span class="comment">//初始化.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            parent[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> distance = <span class="number">0</span>, ctr = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//生成最小生成树</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : edge_set) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">find</span>(i.a_) != <span class="built_in">find</span>(i.b_)) &#123;</span><br><span class="line">                <span class="built_in">Union</span>(i.a_, i.b_);</span><br><span class="line">                ++ctr;</span><br><span class="line">                distance += i.distance_;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (ctr == n - <span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; distance &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E9%9A%8F%E6%9C%BA%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95%EF%BC%9A%E4%BB%A5%E5%B9%B3%E5%9D%87%E5%A4%8D%E6%9D%82%E5%BA%A6O(n)%E8%8E%B7%E5%8F%96%E4%B9%B1%E5%BA%8F%E5%BA%8F%E5%88%97%E4%B8%AD%E7%AC%ACK%E5%A4%A7%E7%9A%84%E5%85%83%E7%B4%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -252,84 +352,6 @@
           <p>非递归写法和递归写法</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RandPartition</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> pos = <span class="built_in">round</span>(<span class="built_in">rand</span>() * <span class="number">1.0</span> / RAND_MAX * (right - left) + left);</span><br><span class="line">    std::<span class="built_in">swap</span>(nums[pos], nums[left]);</span><br><span class="line">    <span class="keyword">int</span> tmp = nums[left];</span><br><span class="line">    <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[right] &gt;= tmp) --right;</span><br><span class="line">        std::<span class="built_in">swap</span>(nums[right], nums[left]);</span><br><span class="line">        <span class="keyword">while</span> (left &lt; right &amp;&amp; nums[left] &lt; tmp) ++left;</span><br><span class="line">        std::<span class="built_in">swap</span>(nums[right], nums[left]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RandSelectMaxK1</span><span class="params">(<span class="keyword">const</span> vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> K)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 查找坐标在[left,right]闭区间内nums的第K大的元素</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">tmp</span><span class="params">(right - left + <span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tmp.<span class="built_in">size</span>(); ++i) tmp[i] = nums[i + left];</span><br><span class="line">    <span class="comment">// new_left,new_right用来标识查找范围</span></span><br><span class="line">    <span class="keyword">int</span> new_left = <span class="number">0</span>, new_right = tmp.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> pos = <span class="built_in">RandPartition</span>(tmp, new_left, new_right);</span><br><span class="line">    <span class="comment">// 找到了第M大的数字: tmp[pos]</span></span><br><span class="line">    <span class="keyword">int</span> M = pos + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (M != K) &#123;</span><br><span class="line">        <span class="keyword">if</span> (M &gt; K)</span><br><span class="line">            new_right = pos - <span class="number">1</span>, pos = <span class="built_in">RandPartition</span>(tmp, new_left, new_right), M = pos + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            new_left = pos + <span class="number">1</span>, pos = <span class="built_in">RandPartition</span>(tmp, new_left, new_right), M = pos + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tmp[pos];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RandSelectMaxK2Core</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> K)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RandSelectMaxK2</span><span class="params">(<span class="keyword">const</span> vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> K)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 驱动例程，如果nums的值是可以改变的，可以不用这个函数</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; tmp = nums;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">RandSelectMaxK2Core</span>(tmp, left, right, K);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RandSelectMaxK2Core</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> K)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left == right) <span class="keyword">return</span> nums[left];</span><br><span class="line">    <span class="keyword">int</span> p = <span class="built_in">RandPartition</span>(nums, left, right);</span><br><span class="line">    <span class="keyword">int</span> M = p - left + <span class="number">1</span>;  <span class="comment">// p位置的元素nums[p]是nums在[left,right]中的第M大</span></span><br><span class="line">    <span class="keyword">if</span> (M == K) <span class="keyword">return</span> nums[p];</span><br><span class="line">    <span class="keyword">if</span> (K &lt; M)</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">RandSelectMaxK2Core</span>(nums, left, p - <span class="number">1</span>, K);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">RandSelectMaxK2Core</span>(nums, p + <span class="number">1</span>, right, K - M);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">nums</span><span class="params">(<span class="number">10</span>)</span></span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;nums = [&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.<span class="built_in">size</span>(); ++i) nums[i] = <span class="built_in">round</span>(<span class="built_in">rand</span>() * <span class="number">1.0</span> / RAND_MAX * <span class="number">100</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : nums) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;]&quot;</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;nums的第[2,8]个元素中第3大的是：&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">RandSelectMaxK2</span>(nums, <span class="number">2</span>, <span class="number">8</span>, <span class="number">3</span>) &lt;&lt; endl;</span><br><span class="line">    <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>() + <span class="number">2</span>, nums.<span class="built_in">begin</span>() + <span class="number">8</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;[2,8]排好序的nums = [&quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : nums) cout &lt;&lt; i &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;]&quot;</span> &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/2021/06/20/%E6%A1%82%E5%9C%86%E5%84%BF%E7%9A%84%E9%94%99%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%A0%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.svg">
-      <meta itemprop="name" content="Zhu Guiyuan">
-      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="缘儿的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/06/20/%E6%A1%82%E5%9C%86%E5%84%BF%E7%9A%84%E9%94%99%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%A0%88/" class="post-title-link" itemprop="url">桂圆儿的错题复习栈</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="桂圆儿的Codeforces错题集"><a href="#桂圆儿的Codeforces错题集" class="headerlink" title="桂圆儿的Codeforces错题集"></a>桂圆儿的Codeforces错题集</h2><p>开一个文章记录自己Codeforces上的错题，方便以后复习。</p>
-<h2 id="Educational-Codeforces-Round-104-Rated-for-Div-2"><a href="#Educational-Codeforces-Round-104-Rated-for-Div-2" class="headerlink" title="Educational Codeforces Round 104 (Rated for Div. 2)"></a><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487">Educational Codeforces Round 104 (Rated for Div. 2)</a></h2><p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487/problem/C">Problem C Minimum Ties</a><br>这道题是关于反对称矩阵的，找规律可以做出来，实现的时候没有注意边界条件导致的WA。</p>
-<p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487/problem/E">Problem E Cheap Dinner</a><br>这道题是dp，比赛的时候还不会写dp，现在看来应该是签到题了。</p>
-<h2 id="PAT甲级"><a href="#PAT甲级" class="headerlink" title="PAT甲级"></a><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/type/7">PAT甲级</a></h2><p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/994805458722734080">PAT 甲级 1033 To Fill or Not to Fill</a><br>情况稍微复杂一点的贪心算法</p>
-<p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/994805507225665536">PAT 甲级 1010 Radix</a><br>看起来是很简单的模拟实际上是边界条件很复杂的二分算法的题。</p>
 
       
     </div>
