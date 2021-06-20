@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.svg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic%7CNoto+Sans+SC:300,300italic,400,400italic,700,700italic%7Cconsolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;zhuguiyuan.github.io&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Gemini&quot;,&quot;version&quot;:&quot;8.5.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;hide&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:true,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:false,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;搜索...&quot;,&quot;empty&quot;:&quot;没有找到任何搜索结果：${query}&quot;,&quot;hits_time&quot;:&quot;找到 ${hits} 个搜索结果（用时 ${time} 毫秒）&quot;,&quot;hits&quot;:&quot;找到 ${hits} 个搜索结果&quot;},&quot;path&quot;:&quot;&#x2F;.&#x2F;public&#x2F;search.xml&quot;,&quot;localsearch&quot;:{&quot;enable&quot;:true,&quot;trigger&quot;:&quot;auto&quot;,&quot;top_n_per_article&quot;:1,&quot;unescape&quot;:false,&quot;preload&quot;:true}}</script><script src="/js/config.js"></script>
+<meta name="description" content="严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现代码没有怎么测试过，可能有些地方有BUG 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767">
+<meta property="og:type" content="article">
+<meta property="og:title" content="严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现">
+<meta property="og:url" content="https://zhuguiyuan.github.io/20210620/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.3%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E5%BC%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="缘儿的博客">
+<meta property="og:description" content="严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现代码没有怎么测试过，可能有些地方有BUG 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-19T20:22:47.000Z">
+<meta property="article:modified_time" content="2021-06-19T20:42:42.676Z">
+<meta property="article:author" content="Zhu Guiyuan">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zhuguiyuan.github.io/20210620/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.3%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E5%BC%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;zh-CN&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;https:&#x2F;&#x2F;zhuguiyuan.github.io&#x2F;20210620&#x2F;%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.3%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E5%BC%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0&#x2F;&quot;,&quot;path&quot;:&quot;20210620&#x2F;严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现&#x2F;&quot;,&quot;title&quot;:&quot;严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现&quot;}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
+<title>严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现 | 缘儿的博客</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">缘儿的博客</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">BulingBuling~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>所有文章</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Zhu Guiyuan"
+      src="/images/avatar.svg">
+  <p class="site-author-name" itemprop="name">Zhu Guiyuan</p>
+  <div class="site-description" itemprop="description">恭喜你发现了这个宝藏小站</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.3%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E5%BC%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="严蔚敏-《数据结构》第二章线性表-2-3节线性表的链式表示-C-实现"><a href="#严蔚敏-《数据结构》第二章线性表-2-3节线性表的链式表示-C-实现" class="headerlink" title="严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现"></a>严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现</h2><p>代码没有怎么测试过，可能有些地方有BUG</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// link_list.h</span></span><br><span class="line"><span class="comment">// By Envirian</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> LINK_LIST_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LINK_LIST_H_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> std::cin;</span><br><span class="line"><span class="keyword">using</span> Status         = <span class="keyword">int</span>;  <span class="comment">// 返回值类型</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> TRUE       = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> FALSE      = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> OK         = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> ERROR      = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INFEASIBLE = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">using</span> ElemType       = <span class="keyword">int</span>;  <span class="comment">// 数据项类型</span></span><br><span class="line"><span class="comment">// LinkList为带头节点的单链表，第0个元素不储存信息，第1个元素开始储存信息</span></span><br><span class="line"><span class="comment">// 使用之前必须先调用InitList()!!!!!</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkList</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        ElemType data;</span><br><span class="line">        LNode* next&#123;<span class="literal">nullptr</span>&#125;;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 以下是P37到P38的函数</span></span><br><span class="line">    <span class="function">Status <span class="title">InitList</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 构造一个空的线性链表</span></span><br><span class="line">        <span class="keyword">if</span> (head_)</span><br><span class="line">            <span class="keyword">return</span> ERROR;  <span class="comment">// 已经存在线性链表了</span></span><br><span class="line">        head_ = <span class="keyword">new</span> LNode;</span><br><span class="line">        tail_ = <span class="literal">nullptr</span>;</span><br><span class="line">        len_  = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">DestroyList</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 销毁线性链表，使其回到InitList()之前的状态，并释放空间</span></span><br><span class="line">        <span class="keyword">if</span> (!head_)</span><br><span class="line">            <span class="keyword">return</span> OK;</span><br><span class="line">        LNode* p = head_;</span><br><span class="line">        <span class="comment">// 回到初始化之前状态</span></span><br><span class="line">        head_ = tail_ = <span class="literal">nullptr</span>;</span><br><span class="line">        len_          = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 释放空间</span></span><br><span class="line">        LNode* q = p-&gt;next;</span><br><span class="line">        <span class="keyword">while</span> (p) &#123;</span><br><span class="line">            <span class="keyword">delete</span> p;</span><br><span class="line">            p = q;</span><br><span class="line">            q = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">ClearList</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 将线性链表重置为初始化后的空表</span></span><br><span class="line">        <span class="built_in">DestroyList</span>();</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">InitList</span>())</span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">InsFirst</span><span class="params">(<span class="keyword">const</span> ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 把e插入到链表头部</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">ListInsert</span>(<span class="number">1</span>, e))</span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">DelFirst</span><span class="params">(ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 删除链表的第一个节点并以e返回</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">ListDelete</span>(<span class="number">1</span>, e))</span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">InsLast</span><span class="params">(<span class="keyword">const</span> ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">ListInsert</span>(len_ + <span class="number">1</span>, e))</span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">DelLast</span><span class="params">(ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 删除链表的尾节点并以e返回</span></span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">ListDelete</span>(len_, e))</span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">GetHead</span><span class="params">(ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 获取第一个元素，用e返回</span></span><br><span class="line">        <span class="keyword">if</span> (!head_-&gt;next)</span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">        e = head_-&gt;next-&gt;data;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">GetBack</span><span class="params">(ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 获取最后一个元素，用e返回</span></span><br><span class="line">        <span class="keyword">if</span> (!tail_)</span><br><span class="line">            <span class="keyword">return</span> ERROR;</span><br><span class="line">        e = tail_-&gt;data;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">ListEmpty</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 若链表为空表，则返回TRUE，否则返回FALSE</span></span><br><span class="line">        <span class="keyword">if</span> (len_ == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> TRUE;</span><br><span class="line">        <span class="keyword">return</span> FALSE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ListLength</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 返回线性表中的元素个数</span></span><br><span class="line">        <span class="keyword">return</span> len_;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 以下是P29到P31的函数</span></span><br><span class="line">    <span class="function">Status <span class="title">GetElem</span><span class="params">(<span class="keyword">int</span> i, ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 当第i个元素存在时，其值赋给e并返回OK，否则返回ERROR</span></span><br><span class="line">        LNode* p = head_-&gt;next;</span><br><span class="line">        <span class="keyword">int</span> ctr  = <span class="number">1</span>;           <span class="comment">// 初始化，p指向第一个节点，ctr为计数器</span></span><br><span class="line">        <span class="keyword">while</span> (p &amp;&amp; ctr &lt; i) &#123;  <span class="comment">// 顺指针向后查找，直到p指向第i个元素或p为空</span></span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            ++ctr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!p || ctr &gt; i)</span><br><span class="line">            <span class="keyword">return</span> ERROR;  <span class="comment">// 第i个元素不存在</span></span><br><span class="line">        e = p-&gt;data;       <span class="comment">// 取第i个元素</span></span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">ListInsert</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">const</span> ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 在带头结点的单链线性表中第i个位置之前插入元素e</span></span><br><span class="line">        LNode* p = head_;</span><br><span class="line">        <span class="keyword">int</span> ctr  = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p &amp;&amp; ctr &lt; i - <span class="number">1</span>) &#123;  <span class="comment">// 寻找i-1个节点</span></span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            ++ctr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!p || ctr &gt; i - <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> ERROR;      <span class="comment">// i大于表长加1或i小于1</span></span><br><span class="line">        LNode* s = <span class="keyword">new</span> LNode;  <span class="comment">// 生成新节点</span></span><br><span class="line">        s-&gt;data  = e;          <span class="comment">// 赋值</span></span><br><span class="line">        <span class="keyword">if</span> (p-&gt;next == <span class="literal">nullptr</span>)</span><br><span class="line">            tail_ = s;      <span class="comment">// 如果是插入后成为最后一个节点，更新尾节点</span></span><br><span class="line">        s-&gt;next = p-&gt;next;  <span class="comment">// 插入L中，注意顺序</span></span><br><span class="line">        p-&gt;next = s;</span><br><span class="line">        ++len_;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">ListDelete</span><span class="params">(<span class="keyword">int</span> i, ElemType&amp; e)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 在带头结点的单链线性表L中，删除第i个元素，并由e返回其值</span></span><br><span class="line">        LNode* p = head_;</span><br><span class="line">        <span class="keyword">int</span> ctr  = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (p-&gt;next &amp;&amp; ctr &lt; i - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">// 寻找第i个节点并令p指向其前驱</span></span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">            ++ctr;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!p-&gt;next || ctr &gt; i - <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> ERROR;  <span class="comment">// 删除位置不合理</span></span><br><span class="line">        <span class="keyword">if</span> (!p-&gt;next-&gt;next)</span><br><span class="line">            tail_ = p;       <span class="comment">// 如果要删除的是尾节点，那么更新尾节点</span></span><br><span class="line">        LNode* q = p-&gt;next;  <span class="comment">// 删除并释放节点</span></span><br><span class="line">        p-&gt;next  = q-&gt;next;</span><br><span class="line">        e        = q-&gt;data;</span><br><span class="line">        <span class="keyword">delete</span> q;</span><br><span class="line">        --len_;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Status <span class="title">CreateList</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 逆位序输入n个元素的值，建立带表头结点的单链线性表(头插法)</span></span><br><span class="line">        <span class="keyword">if</span> (head_)</span><br><span class="line">            <span class="keyword">return</span> ERROR;  <span class="comment">// 单链线性表非空</span></span><br><span class="line">        <span class="comment">// TODO(@Envirian): 等写了清空操作之后把这里改写成先清空</span></span><br><span class="line">        head_ = <span class="keyword">new</span> LNode;  <span class="comment">// 建立带头结点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            LNode* p = <span class="keyword">new</span> LNode;  <span class="comment">// 生成新节点</span></span><br><span class="line">            cin &gt;&gt; (p-&gt;data);</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">                tail_ = p;              <span class="comment">// 第一个插入的节点也是尾节点</span></span><br><span class="line">            p-&gt;next     = head_-&gt;next;  <span class="comment">// 放到表头</span></span><br><span class="line">            head_-&gt;next = p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> OK;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    LNode* head_&#123;<span class="literal">nullptr</span>&#125;;  <span class="comment">// 头节点</span></span><br><span class="line">    LNode* tail_&#123;<span class="literal">nullptr</span>&#125;;  <span class="comment">// 尾节点</span></span><br><span class="line">    <span class="keyword">int</span> len_&#123;<span class="number">0</span>&#125;;            <span class="comment">// 线性表中数据元素的个数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>Zhu Guiyuan
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://zhuguiyuan.github.io/20210620/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%BA%8C%E7%AB%A0%E7%BA%BF%E6%80%A7%E8%A1%A8%202.3%E8%8A%82%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%93%BE%E5%BC%8F%E8%A1%A8%E7%A4%BA%20C++%E5%AE%9E%E7%8E%B0/" title="严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现">https://zhuguiyuan.github.io/20210620/严蔚敏 《数据结构》第二章线性表 2.3节线性表的链式表示 C++实现/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/20210620/%E4%BA%A4%E5%A4%A7%E6%9C%BA%E8%AF%95%E9%A2%98%E7%9B%AE%EF%BC%9A%E5%88%86%E5%89%B2%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E4%B8%BA%E4%B8%A4%E9%83%A8%E5%88%86%EF%BC%8C%E4%BD%BF%E5%BE%97%E5%85%B6%E4%B8%A4%E9%83%A8%E5%88%86%E5%92%8C%E7%9A%84%E5%B7%AE%E5%80%BC%E6%9C%80%E5%B0%8F/" rel="prev" title="交大机试题目：分割一个数组为两部分，使得其两部分和的差值最小">
+                  <i class="fa fa-chevron-left"></i> 交大机试题目：分割一个数组为两部分，使得其两部分和的差值最小
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/20210620/%E4%B8%A5%E8%94%9A%E6%95%8F%20%E3%80%8A%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E3%80%8B%E7%AC%AC%E4%B8%89%E7%AB%A0%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%203.4%E8%8A%82%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E2%80%94%E2%80%94%E9%98%9F%E5%88%97%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%AE%9E%E7%8E%B0%20C++%E5%AE%9E%E7%8E%B0/" rel="next" title="严蔚敏 《数据结构》第三章栈和队列 3.4节循环队列——队列的顺序表示和实现 C++实现">
+                  严蔚敏 《数据结构》第三章栈和队列 3.4节循环队列——队列的顺序表示和实现 C++实现 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhu Guiyuan</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
