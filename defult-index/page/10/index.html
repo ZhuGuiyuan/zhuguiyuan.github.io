@@ -46,7 +46,11 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
-</head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="headband"></div>
@@ -157,14 +161,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
@@ -202,7 +206,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/%E6%A1%82%E5%9C%86%E5%84%BF%E7%9A%84%E9%94%99%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%A0%88/">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/%E9%80%92%E5%BD%92%E7%94%9F%E6%88%901~n%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.svg">
@@ -215,7 +219,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/20210620/%E6%A1%82%E5%9C%86%E5%84%BF%E7%9A%84%E9%94%99%E9%A2%98%E5%A4%8D%E4%B9%A0%E6%A0%88/" class="post-title-link" itemprop="url">桂圆儿的错题复习栈</a>
+          <a href="/20210620/%E9%80%92%E5%BD%92%E7%94%9F%E6%88%901~n%E7%9A%84%E5%85%A8%E6%8E%92%E5%88%97/" class="post-title-link" itemprop="url">递归生成1~n的全排列</a>
         </h2>
 
         <div class="post-meta-container">
@@ -249,11 +253,84 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="桂圆儿的Codeforces错题集"><a href="#桂圆儿的Codeforces错题集" class="headerlink" title="桂圆儿的Codeforces错题集"></a>桂圆儿的Codeforces错题集</h2><p>开一个文章记录自己Codeforces上的错题，方便以后复习。</p>
-<h2 id="Educational-Codeforces-Round-104-Rated-for-Div-2"><a href="#Educational-Codeforces-Round-104-Rated-for-Div-2" class="headerlink" title="Educational Codeforces Round 104 (Rated for Div. 2)"></a><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487">Educational Codeforces Round 104 (Rated for Div. 2)</a></h2><p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487/problem/C">Problem C Minimum Ties</a><br>这道题是关于反对称矩阵的，找规律可以做出来，实现的时候没有注意边界条件导致的WA。</p>
-<p><a target="_blank" rel="noopener" href="https://codeforces.ml/contest/1487/problem/E">Problem E Cheap Dinner</a><br>这道题是dp，比赛的时候还不会写dp，现在看来应该是签到题了。</p>
-<h2 id="PAT甲级"><a href="#PAT甲级" class="headerlink" title="PAT甲级"></a><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/type/7">PAT甲级</a></h2><p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/994805458722734080">PAT 甲级 1033 To Fill or Not to Fill</a><br>情况稍微复杂一点的贪心算法</p>
-<p><a target="_blank" rel="noopener" href="https://pintia.cn/problem-sets/994805342720868352/problems/994805507225665536">PAT 甲级 1010 Radix</a><br>看起来是很简单的模拟实际上是边界条件很复杂的二分算法的题。</p>
+          <h2 id="递归生成1-n的全排列"><a href="#递归生成1-n的全排列" class="headerlink" title="递归生成1~n的全排列"></a>递归生成1~n的全排列</h2><p>为了不污染全局作用域，把变量封装到了类里。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FullArangement</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">FullArangement</span>(<span class="keyword">int</span> num)</span><br><span class="line">        : n&#123;num&#125;</span><br><span class="line">    &#123;</span><br><span class="line">        hash_table = vector&lt;<span class="keyword">bool</span>&gt;(n + <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">        P          = vector&lt;<span class="keyword">int</span>&gt;(n + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GeneratrP</span><span class="params">(<span class="keyword">int</span> index = <span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    vector&lt;<span class="keyword">bool</span>&gt; hash_table;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; P;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FullArangement::GeneratrP</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (index == n + <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            cout &lt;&lt; P[i];</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">1</span>; x &lt;= n; ++x) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hash_table[x] == <span class="literal">false</span>) &#123;</span><br><span class="line">            P[index]      = x;</span><br><span class="line">            hash_table[x] = <span class="literal">true</span>;</span><br><span class="line">            <span class="built_in">GeneratrP</span>(index + <span class="number">1</span>);</span><br><span class="line">            hash_table[x] = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="built_in">FullArangement</span>(n).<span class="built_in">GeneratrP</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20%E7%BD%91%E7%BB%9C%E5%B1%82%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2LS%E7%AE%97%E6%B3%95%EF%BC%88Dijkstra%E7%AE%97%E6%B3%95%EF%BC%89%20%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20210620/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%20%E7%BD%91%E7%BB%9C%E5%B1%82%E6%8E%A7%E5%88%B6%E5%B9%B3%E9%9D%A2LS%E7%AE%97%E6%B3%95%EF%BC%88Dijkstra%E7%AE%97%E6%B3%95%EF%BC%89%20%E9%82%BB%E6%8E%A5%E8%A1%A8%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">计算机网络 网络层控制平面LS算法（Dijkstra算法） 邻接表实现</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">    <span class="comment">// 邻接表list&lt;pair&lt;int, int&gt;&gt; neighber  first是权值,second是节点序号</span></span><br><span class="line">    list&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; neighber;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">Dijkstra</span><span class="params">(<span class="keyword">const</span> vector&lt;Node&gt;&amp; graph, <span class="keyword">int</span> start)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 无穷距离</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line">    <span class="comment">// 一共有多少个节点</span></span><br><span class="line">    <span class="keyword">int</span> node_num = graph.<span class="built_in">size</span>();</span><br><span class="line">    <span class="comment">// 用来返回的距离表</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">distance_from_start</span><span class="params">(node_num, INF)</span></span>;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;&amp; dis = distance_from_start;</span><br><span class="line">    <span class="comment">// 已经得到了多少个节点的结果</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">bool</span>&gt; <span class="title">is_checked</span><span class="params">(node_num, <span class="literal">false</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> checked_num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    checked_num       = <span class="number">1</span>;</span><br><span class="line">    is_checked[start] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : graph[start].neighber) &#123;</span><br><span class="line">        dis[i.second] = i.first;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 循环</span></span><br><span class="line">    <span class="keyword">while</span> (checked_num &lt; node_num) &#123;</span><br><span class="line">        <span class="keyword">int</span> node_to_check, min_dis = INF;</span><br><span class="line">        <span class="comment">// 找到了最小距离的点，也就是下一个确认的点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; node_num; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!is_checked[i] &amp;&amp; dis[i] &lt; min_dis) &#123;</span><br><span class="line">                node_to_check = i;</span><br><span class="line">                min_dis       = dis[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 加入已确认的集合</span></span><br><span class="line">        ++checked_num;</span><br><span class="line">        is_checked[node_to_check] = <span class="literal">true</span>;</span><br><span class="line">        <span class="comment">// 更新node_to_check的邻居</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; i : graph[node_to_check].neighber) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!is_checked[i.second]) &#123;</span><br><span class="line">                dis[i.second] = std::<span class="built_in">min</span>(dis[node_to_check] + i.first, dis[i.second]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dis;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">// Input</span></span><br><span class="line">    <span class="keyword">int</span> V, E;</span><br><span class="line">    cin &gt;&gt; V &gt;&gt; E;  <span class="comment">// 节点数和边数</span></span><br><span class="line">    <span class="function">vector&lt;Node&gt; <span class="title">graph</span><span class="params">(V)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; E; ++i) &#123;</span><br><span class="line">        <span class="keyword">int</span> from, to, cost;  <span class="comment">// 起点，终点，权值</span></span><br><span class="line">        cin &gt;&gt; from &gt;&gt; to &gt;&gt; cost;</span><br><span class="line">        <span class="comment">// 无向图 from to等价</span></span><br><span class="line">        graph[from].neighber.<span class="built_in">push_back</span>(&#123;cost, to&#125;);</span><br><span class="line">        graph[to].neighber.<span class="built_in">push_back</span>(&#123;cost, from&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 测试代码</span></span><br><span class="line">    <span class="keyword">auto</span> dis = <span class="built_in">Dijkstra</span>(graph, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; V; i++)</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;S到序号&quot;</span> &lt;&lt; i &lt;&lt; <span class="string">&quot;顶点的最短距离:&quot;</span> &lt;&lt; dis[i] &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考文献：《计算机网络：自顶向下方法》中文版（原书第7版）P246伪代码</p>
 
       
     </div>
@@ -463,6 +540,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{&quot;enable&quot;:true,&quot;tags&quot;:&quot;none&quot;,&quot;js&quot;:{&quot;url&quot;:&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3.1.4&#x2F;es5&#x2F;tex-mml-chtml.js&quot;,&quot;integrity&quot;:&quot;sha256-ncNI9OXOS5Ek4tzVYiOMmN&#x2F;KKCPZ6V0Cpv2P&#x2F;zHntiA&#x3D;&quot;}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
