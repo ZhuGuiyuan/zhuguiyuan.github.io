@@ -202,6 +202,156 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201002%20A+B%20for%20Polynomials/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20210620/PAT%20%E7%94%B2%E7%BA%A7%201002%20A+B%20for%20Polynomials/" class="post-title-link" itemprop="url">PAT 甲级 1002 A+B for Polynomials</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="PAT-甲级-1002-A-B-for-Polynomials"><a href="#PAT-甲级-1002-A-B-for-Polynomials" class="headerlink" title="PAT 甲级 1002 A+B for Polynomials"></a>PAT 甲级 1002 A+B for Polynomials</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">double</span> coefficients_per_exponents[<span class="number">1010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);<span class="comment">//freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">            <span class="keyword">int</span> x; <span class="keyword">double</span> y; cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">            coefficients_per_exponents[x] += y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ctr = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1010</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">fabs</span>(coefficients_per_exponents[i]) &gt; <span class="number">1e-6</span>) ++ctr;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ctr;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1010</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">fabs</span>(coefficients_per_exponents[i])&gt;<span class="number">1e-6</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot; %d %.1f&quot;</span>, i, coefficients_per_exponents[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201001%20A+B%20Format/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20210620/PAT%20%E7%94%B2%E7%BA%A7%201001%20A+B%20Format/" class="post-title-link" itemprop="url">PAT 甲级 1001 A+B Format</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="PAT-甲级-1001-A-B-Format"><a href="#PAT-甲级-1001-A-B-Format" class="headerlink" title="PAT 甲级 1001 A+B Format"></a>PAT 甲级 1001 A+B Format</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> a, b; cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    string ans = <span class="built_in">to_string</span>(<span class="built_in">abs</span>(a + b));</span><br><span class="line">    <span class="keyword">if</span> (a + b &lt; <span class="number">0</span>) cout &lt;&lt; <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        cout &lt;&lt; ans[i];</span><br><span class="line">        <span class="keyword">if</span> ((ans.<span class="built_in">size</span>() - <span class="number">1</span> - i) % <span class="number">3</span> == <span class="number">0</span> &amp;&amp; i != ans.<span class="built_in">size</span>() - <span class="number">1</span>) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/CCF-CSP%E8%AE%A4%E8%AF%81%20202012-2%20%E6%9C%9F%E6%9C%AB%E9%A2%84%E6%B5%8B%E4%B9%8B%E6%9C%80%E4%BD%B3%E9%98%88%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -375,7 +525,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201002%20A+B%20for%20Polynomials/">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201005%20Spell%20It%20Right/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.svg">
@@ -388,7 +538,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/20210620/PAT%20%E7%94%B2%E7%BA%A7%201002%20A+B%20for%20Polynomials/" class="post-title-link" itemprop="url">PAT 甲级 1002 A+B for Polynomials</a>
+          <a href="/20210620/PAT%20%E7%94%B2%E7%BA%A7%201005%20Spell%20It%20Right/" class="post-title-link" itemprop="url">PAT 甲级 1005 Spell It Right</a>
         </h2>
 
         <div class="post-meta-container">
@@ -422,82 +572,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="PAT-甲级-1002-A-B-for-Polynomials"><a href="#PAT-甲级-1002-A-B-for-Polynomials" class="headerlink" title="PAT 甲级 1002 A+B for Polynomials"></a>PAT 甲级 1002 A+B for Polynomials</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">double</span> coefficients_per_exponents[<span class="number">1010</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);<span class="comment">//freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">            <span class="keyword">int</span> x; <span class="keyword">double</span> y; cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">            coefficients_per_exponents[x] += y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ctr = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1010</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">fabs</span>(coefficients_per_exponents[i]) &gt; <span class="number">1e-6</span>) ++ctr;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ctr;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1010</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">fabs</span>(coefficients_per_exponents[i])&gt;<span class="number">1e-6</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot; %d %.1f&quot;</span>, i, coefficients_per_exponents[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201001%20A+B%20Format/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.svg">
-      <meta itemprop="name" content="Zhu Guiyuan">
-      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="缘儿的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20210620/PAT%20%E7%94%B2%E7%BA%A7%201001%20A+B%20Format/" class="post-title-link" itemprop="url">PAT 甲级 1001 A+B Format</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="PAT-甲级-1001-A-B-Format"><a href="#PAT-甲级-1001-A-B-Format" class="headerlink" title="PAT 甲级 1001 A+B Format"></a>PAT 甲级 1001 A+B Format</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> a, b; cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">    string ans = <span class="built_in">to_string</span>(<span class="built_in">abs</span>(a + b));</span><br><span class="line">    <span class="keyword">if</span> (a + b &lt; <span class="number">0</span>) cout &lt;&lt; <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ans.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        cout &lt;&lt; ans[i];</span><br><span class="line">        <span class="keyword">if</span> ((ans.<span class="built_in">size</span>() - <span class="number">1</span> - i) % <span class="number">3</span> == <span class="number">0</span> &amp;&amp; i != ans.<span class="built_in">size</span>() - <span class="number">1</span>) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;,&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="PAT-甲级-1005-Spell-It-Right"><a href="#PAT-甲级-1005-Spell-It-Right" class="headerlink" title="PAT 甲级 1005 Spell It Right"></a>PAT 甲级 1005 Spell It Right</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">string english_of_num[<span class="number">10</span>] = &#123;</span><br><span class="line">    <span class="string">&quot;zero&quot;</span>,<span class="string">&quot;one&quot;</span>,<span class="string">&quot;two&quot;</span>,<span class="string">&quot;three&quot;</span>,<span class="string">&quot;four&quot;</span>,<span class="string">&quot;five&quot;</span>,<span class="string">&quot;six&quot;</span>,<span class="string">&quot;seven&quot;</span>,<span class="string">&quot;eight&quot;</span>,<span class="string">&quot;nine&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);<span class="comment">//freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>; <span class="keyword">int</span> each_digital;</span><br><span class="line">    <span class="keyword">while</span> (each_digital = <span class="built_in">getchar</span>(), each_digital != EOF &amp;&amp; each_digital != <span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">        sum += each_digital - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    string sum_string = <span class="built_in">to_string</span>(sum);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sum_string.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i != <span class="number">0</span>) cout &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout &lt;&lt; english_of_num[sum_string[i] - <span class="string">&#x27;0&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -600,6 +675,81 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201008%20Elevator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.svg">
+      <meta itemprop="name" content="Zhu Guiyuan">
+      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="缘儿的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/20210620/PAT%20%E7%94%B2%E7%BA%A7%201008%20Elevator/" class="post-title-link" itemprop="url">PAT 甲级 1008 Elevator</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="PAT-甲级-1008-Elevator"><a href="#PAT-甲级-1008-Elevator" class="headerlink" title="PAT 甲级 1008 Elevator"></a>PAT 甲级 1008 Elevator</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>, next_floor = <span class="number">0</span>, now_floor = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; next_floor;</span><br><span class="line">        <span class="keyword">if</span> (next_floor &gt;= now_floor)</span><br><span class="line">            ans += <span class="number">6</span> * (next_floor - now_floor) + <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ans += <span class="number">4</span> * (now_floor - next_floor) + <span class="number">5</span>;</span><br><span class="line">        now_floor = next_floor;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201009%20Product%20of%20Polynomials/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -649,81 +799,6 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="PAT-甲级-1009-Product-of-Polynomials"><a href="#PAT-甲级-1009-Product-of-Polynomials" class="headerlink" title="PAT 甲级 1009 Product of Polynomials"></a>PAT 甲级 1009 Product of Polynomials</h2><p>注意数组开大一点，不然乘法可能段错误</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">map&lt;<span class="keyword">int</span>, <span class="keyword">double</span>&gt; polynomial[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">double</span> polynomial_ans[<span class="number">2020</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);<span class="comment">//freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">            <span class="keyword">int</span> x; <span class="keyword">double</span> y; cin &gt;&gt; x &gt;&gt; y;</span><br><span class="line">            polynomial[i][x] = y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> i : polynomial[<span class="number">0</span>]) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> j : polynomial[<span class="number">1</span>]) &#123;</span><br><span class="line">            polynomial_ans[i.first + j.first] += i.second*j.second;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ctr = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2020</span>; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">fabs</span>(polynomial_ans[i]) &gt; <span class="number">1e-6</span>) ++ctr;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ctr;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2020</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">fabs</span>(polynomial_ans[i]) &gt; <span class="number">1e-6</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot; %d %.1f&quot;</span>, i, polynomial_ans[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201008%20Elevator/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.svg">
-      <meta itemprop="name" content="Zhu Guiyuan">
-      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="缘儿的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20210620/PAT%20%E7%94%B2%E7%BA%A7%201008%20Elevator/" class="post-title-link" itemprop="url">PAT 甲级 1008 Elevator</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="PAT-甲级-1008-Elevator"><a href="#PAT-甲级-1008-Elevator" class="headerlink" title="PAT 甲级 1008 Elevator"></a>PAT 甲级 1008 Elevator</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>, next_floor = <span class="number">0</span>, now_floor = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; next_floor;</span><br><span class="line">        <span class="keyword">if</span> (next_floor &gt;= now_floor)</span><br><span class="line">            ans += <span class="number">6</span> * (next_floor - now_floor) + <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            ans += <span class="number">4</span> * (now_floor - next_floor) + <span class="number">5</span>;</span><br><span class="line">        now_floor = next_floor;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -875,81 +950,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h2 id="PAT-甲级-1012-The-Best-Rank"><a href="#PAT-甲级-1012-The-Best-Rank" class="headerlink" title="PAT 甲级 1012 The Best Rank"></a>PAT 甲级 1012 The Best Rank</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> &#123;</span></span><br><span class="line">    string student_id_;</span><br><span class="line">    <span class="keyword">int</span> scores_acme_[<span class="number">4</span>]&#123; <span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> rank_acme_[<span class="number">4</span>]&#123; <span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span> &#125;;</span><br><span class="line">    <span class="keyword">char</span> rank_type_&#123; <span class="number">0</span> &#125;;</span><br><span class="line">    <span class="keyword">int</span> best_rank_&#123; <span class="number">-1</span> &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> sort_position = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> Student &amp;lhs, <span class="keyword">const</span> Student &amp;rhs)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> lhs.scores_acme_[sort_position] &gt; rhs.scores_acme_[sort_position];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);<span class="comment">//freopen(&quot;output.txt&quot;, &quot;w&quot;, stdout);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="comment">//input</span></span><br><span class="line">    <span class="keyword">int</span> n, m; cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="function">vector&lt;Student&gt; <span class="title">student_set</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : student_set) &#123;</span><br><span class="line">        cin &gt;&gt; i.student_id_ &gt;&gt; i.scores_acme_[<span class="number">1</span>] &gt;&gt; i.scores_acme_[<span class="number">2</span>] &gt;&gt; i.scores_acme_[<span class="number">3</span>];</span><br><span class="line">        i.scores_acme_[<span class="number">0</span>] = (i.scores_acme_[<span class="number">1</span>] + i.scores_acme_[<span class="number">2</span>] + i.scores_acme_[<span class="number">3</span>]) / <span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//sorts and gets rank_acme_.</span></span><br><span class="line">    <span class="keyword">for</span> (sort_position = <span class="number">0</span>; sort_position &lt; <span class="number">4</span>; ++sort_position) &#123;</span><br><span class="line">        <span class="built_in">sort</span>(student_set.<span class="built_in">begin</span>(), student_set.<span class="built_in">end</span>(), cmp);</span><br><span class="line">        <span class="comment">//n=student_set.size();</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i != <span class="number">0</span> &amp;&amp; student_set[i - <span class="number">1</span>].scores_acme_[sort_position]</span><br><span class="line">                == student_set[i].scores_acme_[sort_position]) &#123;</span><br><span class="line">                student_set[i].rank_acme_[sort_position] = student_set[i - <span class="number">1</span>].rank_acme_[sort_position];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                student_set[i].rank_acme_[sort_position] = i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//gets rank_type.</span></span><br><span class="line">    <span class="comment">//and builds hash_table for checking.</span></span><br><span class="line">    map &lt;string, Student*&gt; hash_table;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : student_set) &#123;</span><br><span class="line">        <span class="keyword">int</span> a = i.rank_acme_[<span class="number">0</span>], c = i.rank_acme_[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> m = i.rank_acme_[<span class="number">2</span>], e = i.rank_acme_[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">if</span> (a &lt;= c &amp;&amp; a &lt;= m &amp;&amp; a &lt;= e) &#123; i.rank_type_ = <span class="string">&#x27;A&#x27;</span>; i.best_rank_ = a; &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (c &lt;= a &amp;&amp; c &lt;= m &amp;&amp; c &lt;= e) &#123; i.rank_type_ = <span class="string">&#x27;C&#x27;</span>; i.best_rank_ = c; &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (m &lt;= a &amp;&amp; m &lt;= c &amp;&amp; m &lt;= e)&#123;i.rank_type_ = <span class="string">&#x27;M&#x27;</span>;i.best_rank_ = m; &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (e &lt;= a &amp;&amp; e &lt;= c &amp;&amp; e &lt;= m)&#123;i.rank_type_ = <span class="string">&#x27;E&#x27;</span>;i.best_rank_ = e; &#125;</span><br><span class="line">        hash_table[i.student_id_] = &amp;i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//checks</span></span><br><span class="line">    string check_id;</span><br><span class="line">    <span class="keyword">while</span> (m--) &#123;</span><br><span class="line">        cin &gt;&gt; check_id;</span><br><span class="line">        <span class="keyword">if</span> (hash_table[check_id] == <span class="literal">nullptr</span>) cout &lt;&lt; <span class="string">&quot;N/A&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; hash_table[check_id]-&gt;best_rank_ &lt;&lt; <span class="string">&quot; &quot;</span></span><br><span class="line">            &lt;&lt; hash_table[check_id]-&gt;rank_type_ &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://zhuguiyuan.github.io/20210620/PAT%20%E7%94%B2%E7%BA%A7%201015%20Reversible%20Primes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.svg">
-      <meta itemprop="name" content="Zhu Guiyuan">
-      <meta itemprop="description" content="恭喜你发现了这个宝藏小站">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="缘儿的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/20210620/PAT%20%E7%94%B2%E7%BA%A7%201015%20Reversible%20Primes/" class="post-title-link" itemprop="url">PAT 甲级 1015 Reversible Primes</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-06-20 04:22:47 / 修改时间：04:42:42" itemprop="dateCreated datePublished" datetime="2021-06-20T04:22:47+08:00">2021-06-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8EOJ/" itemprop="url" rel="index"><span itemprop="name">算法与OJ</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="PAT-甲级-1015-Reversible-Primes"><a href="#PAT-甲级-1015-Reversible-Primes" class="headerlink" title="PAT 甲级 1015 Reversible Primes"></a>PAT 甲级 1015 Reversible Primes</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> kPRIME_SIZE = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">bool</span> is_prime[kPRIME_SIZE];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">re_D</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> D)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; n_D;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 转换进制后翻转</span></span><br><span class="line">    <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">        n_D.<span class="built_in">push_back</span>(n % D);</span><br><span class="line">        n /= D;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 转换回十进制</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n_D.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">        ans = ans * D + n_D[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    <span class="built_in">freopen</span>(<span class="string">&quot;input.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="built_in">memset</span>(is_prime, <span class="literal">true</span>, <span class="built_in"><span class="keyword">sizeof</span></span>(is_prime));</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; kPRIME_SIZE; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (is_prime[i]) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i * <span class="number">2</span>; j &lt; kPRIME_SIZE; j += i) &#123;</span><br><span class="line">                is_prime[j] = <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    is_prime[<span class="number">0</span>] = <span class="literal">false</span>, is_prime[<span class="number">1</span>] = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">int</span> n, D;</span><br><span class="line">    <span class="keyword">while</span> (cin &gt;&gt; n &gt;&gt; D, n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> n_r = <span class="built_in">re_D</span>(n, D);</span><br><span class="line">        <span class="keyword">if</span> (is_prime[n] &amp;&amp; is_prime[n_r])</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;Yes\n&quot;</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;No\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
